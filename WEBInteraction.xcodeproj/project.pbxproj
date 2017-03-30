@@ -15,6 +15,8 @@
 		1F5D563D1E8BBBB900A7EB24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D563B1E8BBBB900A7EB24 /* LaunchScreen.storyboard */; };
 		1F5D56461E8BBC8D00A7EB24 /* WKWEBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D56451E8BBC8D00A7EB24 /* WKWEBViewController.m */; };
 		1F6C3A261E8CE82100610EF0 /* JSLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C3A251E8CE82100610EF0 /* JSLibrary.m */; };
+		1F6C3A281E8D0AF200610EF0 /* jsAndOC.html in Resources */ = {isa = PBXBuildFile; fileRef = 1F6C3A271E8D0AF200610EF0 /* jsAndOC.html */; };
+		1F6C3A2B1E8D212800610EF0 /* JSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6C3A291E8D212800610EF0 /* JSObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,9 @@
 		1F5D56451E8BBC8D00A7EB24 /* WKWEBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWEBViewController.m; sourceTree = "<group>"; };
 		1F6C3A241E8CE82100610EF0 /* JSLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSLibrary.h; sourceTree = "<group>"; };
 		1F6C3A251E8CE82100610EF0 /* JSLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSLibrary.m; sourceTree = "<group>"; };
+		1F6C3A271E8D0AF200610EF0 /* jsAndOC.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = jsAndOC.html; sourceTree = "<group>"; };
+		1F6C3A291E8D212800610EF0 /* JSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSObject.m; sourceTree = "<group>"; };
+		1F6C3A2A1E8D212800610EF0 /* JSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSObject.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +73,9 @@
 				1F5D56311E8BBBB900A7EB24 /* AppDelegate.m */,
 				1F5D56331E8BBBB900A7EB24 /* WEBViewController.h */,
 				1F5D56341E8BBBB900A7EB24 /* WEBViewController.m */,
+				1F6C3A271E8D0AF200610EF0 /* jsAndOC.html */,
+				1F6C3A2A1E8D212800610EF0 /* JSObject.h */,
+				1F6C3A291E8D212800610EF0 /* JSObject.m */,
 				1F6C3A241E8CE82100610EF0 /* JSLibrary.h */,
 				1F6C3A251E8CE82100610EF0 /* JSLibrary.m */,
 				1F5D56441E8BBC8D00A7EB24 /* WKWEBViewController.h */,
@@ -149,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F5D563D1E8BBBB900A7EB24 /* LaunchScreen.storyboard in Resources */,
+				1F6C3A281E8D0AF200610EF0 /* jsAndOC.html in Resources */,
 				1F5D563A1E8BBBB900A7EB24 /* Assets.xcassets in Resources */,
 				1F5D56381E8BBBB900A7EB24 /* Main.storyboard in Resources */,
 			);
@@ -164,6 +173,7 @@
 				1F6C3A261E8CE82100610EF0 /* JSLibrary.m in Sources */,
 				1F5D56351E8BBBB900A7EB24 /* WEBViewController.m in Sources */,
 				1F5D56321E8BBBB900A7EB24 /* AppDelegate.m in Sources */,
+				1F6C3A2B1E8D212800610EF0 /* JSObject.m in Sources */,
 				1F5D562F1E8BBBB800A7EB24 /* main.m in Sources */,
 				1F5D56461E8BBC8D00A7EB24 /* WKWEBViewController.m in Sources */,
 			);

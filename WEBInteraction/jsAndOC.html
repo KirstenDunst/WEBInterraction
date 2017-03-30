@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JS与OC的交互</title>
+	<style type="text/css">
+		div	{
+			margin-left: 10px;
+			margin-top: 50px;
+		}
+
+		input {
+			display: block;
+			font-size: 18px;
+		}
+	</style>
+
+	<script type="text/javascript">
+		
+		function jsFunc() {
+			alert("jsFunc被调用了");
+		}
+
+		function jsFunc1(num) {
+			alert("我有一个参数" + num);
+		}
+
+        function  jsFunc1(num1,num2) {
+            
+			alert("我有两个参数" + num1 + "和参数" + num2);
+		}
+    
+	</script>
+
+</head>
+<body>
+<div>
+	<input type="button" value="按钮A" onclick="jsFunc1(2)">
+    <br>
+	<input type="button" value="按钮B" onclick="jsFunc1(2,3)">
+    <br>
+	<input type="button" value="按钮C" onclick="justSo.openPhotoAlbum()">
+    <br>
+    <input type="button" value="按钮S" onclick=justSo.showAlertWithTitleAndString('我是JS传过来的Title','JS')>
+    <br>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

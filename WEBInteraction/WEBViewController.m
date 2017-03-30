@@ -8,7 +8,7 @@
 
 #import "WEBViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
-
+#import "JSObject.h"
 
 
 @interface WEBViewController ()<UIWebViewDelegate>
@@ -48,9 +48,28 @@
      (4) file://
      (5) data://
      */
-    [web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com/"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10]];
+    [web loadRequest:[NSURLRequest requestWithURL:[[NSBundle mainBundle] URLForResource:@"jsAndOC" withExtension:@"html"] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10]];
     web.delegate = self;
     [self.view addSubview:web];
+    
+    
+    //JS的上下文,js代码的所有操作都必须在该上下文中
+    JSContext *jsContext = [[JSContext alloc] init];
+    
+    //该方法是增加js代码
+    [jsContext evaluateScript:@"var num = 10"];
+    [jsContext evaluateScript:@"function sum(num1,num2) {return num1 + num2;}"];
+    
+    JSValue *num = jsContext[@"num"];
+    NSLog(@"%@",num.toNumber);
+    
+    int num1 = 9;
+    int num2 = 8;
+    
+    JSValue *sum = [jsContext evaluateScript:[NSString stringWithFormat:@"sum(%d,%d)",num1,num2]];
+    NSLog(@"%@",sum);
+    
+    
     
     UIButton *myCreateButton = [UIButton buttonWithType:UIButtonTypeCustom];
     myCreateButton.frame = CGRectMake(self.view.frame.size.width-80, self.view.frame.size.width-80, 60, 60);
@@ -103,21 +122,39 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     // 这里处理加载结束的时候处理的方式。
     //可以用来处理界面加载大小计算
-//    NSString *str = [webView stringByEvaluatingJavaScriptFromString:@"document.body.clientWidth"];
+    // 计算html的高度、宽度  可以根据获取到的高度动态设置父视图的高度、宽度。
+//    NSString *fitHeight = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight;"];
+//    NSString *fitWidth = [webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollWidth;"];
     
+    
+    
+    
+    //1.OC调用JS
     JSContext *context = [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     
-    context[@"passValue"] = ^{
-        
-        NSArray *arg = [JSContext currentArguments];
-        for (id obj in arg) {
-            NSLog(@"%@", obj);
+    //webView的方法，和以上功能一致
+    [webView stringByEvaluatingJavaScriptFromString:@"jsFunc1(2,2)"];
+    
+    //2.JS调用OC
+    //第一种情况
+    //js调用js的方法，通过拦截该方法后顺便调用oc的方法
+    context[@"jsFunc1"] = ^(){
+        NSLog(@"我被JS调用了");
+        //获得调用方法传递过来的参数
+        NSArray *arr = [JSContext currentArguments];
+        //遍历参数数组
+        for (id arg in arr) {
+            NSLog(@"arg = %@",arg);
         }
     };
-    
-    
-    
 
+    //第二种情况
+    //通过JS对象传递
+    JSObject *object = [JSObject new];
+    object.delegate = self;
+    
+    //将对象赋值给我们的上下文
+    context[@"justSo"] = object;
     
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
