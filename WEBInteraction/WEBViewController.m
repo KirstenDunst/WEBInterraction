@@ -118,6 +118,20 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView{
     //这里处理开始加载网页时的处理
     
+    
+    
+    
+    //获取cookie值消息
+    NSHTTPCookieStorage*cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    NSMutableString * cookieString = [[NSMutableString alloc]init];
+    for (NSHTTPCookie*cookie in [cookieJar cookies]) {
+        [cookieString appendFormat:@"%@=%@;",cookie.name,cookie.value];
+    }
+    //删除最后一个“；”
+    [cookieString deleteCharactersInRange:NSMakeRange(cookieString.length - 1, 1)];
+    
+    
+    
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     // 这里处理加载结束的时候处理的方式。
